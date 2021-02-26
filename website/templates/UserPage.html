@@ -1,0 +1,17 @@
+{% extends 'LogedPageBase.html' %}
+{% block title %}User Page {% endblock %}
+
+{% block loged_content %}  
+  <!-- Page content -->
+<div class="main">
+    <h1>Hello,{% if user.ifAdmin()%} Admin {% endif %}</h1>
+    <h2>Your navigation bar is on the left</h2>
+    <h2>New Order - Placing a new order</h2>
+    <h2>My Orders - See all of your orders</h2>
+    {% if user.ifAdmin()%}
+    <h2>All Orders - See all of the application orders</h2>
+    {% endif %}
+    <h2>Logout - Loggin out of the user</h2>
+</div>
+
+{% endblock %}

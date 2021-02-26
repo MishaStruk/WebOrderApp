@@ -1,0 +1,38 @@
+{% extends 'LogedPageBase.html' %}
+{% block title %}Admin Orders Page {% endblock %}
+
+{% block loged_content %}  
+  <!-- Page content -->
+<div class="table-responsive-lg">
+  {% if user.ifAdmin()%}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Userid</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Food ordered</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <th scope="row">{{order [0]}}</th>
+        <td>{{ order[2] }} </td>
+        <td>{% if order[1] == 0 %}
+          Pizza
+         {% endif %}
+         {% if order[1] == 1 %}
+          Toast
+         {% endif %}
+         {% if order[1] == 2 %}
+          Falafel
+         {% endif %}</td>
+      </tr>
+      {% endfor %}
+  {% else %}
+  <h1>You are not an admin</h1>
+  {% endif %}
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+
+{% extends 'LogedPageBase.html' %}
+{% block title %}New Order Page {% endblock %}
+
+{% block loged_content %}  
+  <!-- Page content -->
+  <form method="POST">
+    <h1>What would you like to eat? </h1>
+    <div class="form-group">
+        <input type="radio" id="pizza" name="foodType" value="pizza">
+        <label for="pizza">Pizaa</label><br>
+        <input type="radio" id="toast" name="foodType" value="toast">
+        <label for="toast">Toast</label><br>
+        <input type="radio" id="falafel" name="foodType" value="falafel">
+        <label for="falafel">Falafel</label>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary" >Order</button>
+</form>
+
+{% endblock %}

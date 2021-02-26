@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Login Page {% endblock %}
+
+{% block content %}
+<!-- Error Flashing code-->
+{% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+<form method="POST">
+    <div style="position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="userid" >User ID:</label>
+        <input type="text" class="fadeIn second" id="userid" name="userid" placeholder="Enter User ID" required autofocus>
+        <br />
+        <label for="password" ></label>Password:</label>
+        <input type="password" class="fadeIn third" id="password" name="password" placeholder="Enter Password" required>
+    <button type="submit" class="btn btn-lg btn-primary btn-block" >Login</button>
+    </div>
+</form>
+
+{% endblock %}

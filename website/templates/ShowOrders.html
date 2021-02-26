@@ -1,0 +1,31 @@
+{% extends 'LogedPageBase.html' %}
+{% block title %}Orders Page {% endblock %}
+
+{% block loged_content %}  
+  <!-- Page content -->
+
+<div class="table-responsive-lg">
+    <h1>Orders for userid: {{current_user.userid}}</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Order Date</th>
+          <th scope="col">Food ordered</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td>{{ order[2] }} </td>
+          <td>{% if order[1] == 0 %}
+            Pizza
+           {% endif %}
+           {% if order[1] == 1 %}
+            Toast
+           {% endif %}
+           {% if order[1] == 2 %}
+            Falafel
+           {% endif %}</td>
+        </tr>
+        {% endfor %}
+{% endblock %}

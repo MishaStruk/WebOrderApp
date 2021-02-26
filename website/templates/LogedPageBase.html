@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!-- Side navigation -->
+<div class="sidenav">
+    <a href="/AddOrder">New Order</a>
+    <a href="/ShowOrders">My Orders</a>
+    {% if user.ifAdmin()%}
+    <a href="/AdminOrders">All Orders</a>
+    {% endif %}
+    <a href="/logout">Logout</a>
+</div>
+  
+  <!-- Page content -->
+<div class="main">
+  <!-- Error Flashing code-->
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+  {% block loged_content %}{% endblock %}
+</div>
+
+{% endblock %}
